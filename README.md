@@ -6,8 +6,8 @@ Claude skills that help coding instructors plan classes and keep parents in the 
 
 | Skill | What it does | Input | Output |
 |---|---|---|---|
-| [`lesson-generator`](skills/lesson-generator) | Turns lesson plans into a ready-to-teach slide deck with a web-game break after each learning goal | Lesson-plan files (PDF, Word, text) | A 60–90 minute slide deck with speaker notes |
-| [`report-generator`](skills/report-generator) | Writes a short parent update about what the class learned | Lesson plans or a lesson-generator deck, plus student names | Date, belt/sprint/lessons, student list, and a 150-word report |
+| [`lesson-generator`](lesson-generator) | Turns lesson plans into a ready-to-teach slide deck with a web-game break after each learning goal | Lesson-plan files (PDF, Word, text) | A 60–90 minute slide deck with speaker notes |
+| [`report-generator`](report-generator) | Writes a short parent update about what the class learned | Lesson plans or a lesson-generator deck, plus student names | Date, belt/sprint/lessons, student list, and a 150-word report |
 
 ## Workflow
 
@@ -27,15 +27,14 @@ Example prompts:
 ## Repository structure
 
 ```
-claude-skills/
+iCode-Claude-Skills/
 ├── README.md
-└── skills/
-    ├── lesson-generator/
-    │   ├── SKILL.md      # Instructions Claude follows
-    │   └── README.md     # Details, options and customizing
-    └── report-generator/
-        ├── SKILL.md
-        └── README.md
+├── lesson-generator/
+│   ├── SKILL.md      # Instructions Claude follows
+│   └── README.md     # Details, options and customizing
+└── report-generator/
+    ├── SKILL.md
+    └── README.md
 ```
 
 Each skill folder is self-contained. The folder name matches the `name:` field in its `SKILL.md`.
@@ -50,8 +49,9 @@ Copy the skill folders you want into one of:
 - `~/.claude/skills/` (just for you)
 
 ```bash
-git clone <this-repo-url>
-cp -r claude-skills/skills/* ~/.claude/skills/
+git clone https://github.com/Sigma-Works/iCode-Claude-Skills.git
+mkdir -p ~/.claude/skills
+cp -r iCode-Claude-Skills/lesson-generator iCode-Claude-Skills/report-generator ~/.claude/skills/
 ```
 
 ### Claude apps (claude.ai / desktop)
@@ -59,12 +59,12 @@ cp -r claude-skills/skills/* ~/.claude/skills/
 Zip a skill's folder (for example `lesson-generator/`) and upload it as a custom skill in Claude's settings. Organization admins can share uploaded skills with the whole team.
 
 ```bash
-cd skills && zip -r lesson-generator.zip lesson-generator
+cd iCode-Claude-Skills && zip -r lesson-generator.zip lesson-generator
 ```
 
 ## Contributing
 
-- Add a new skill as its own folder under `skills/` with a `SKILL.md` and a `README.md`.
+- Add a new skill as its own top-level folder with a `SKILL.md` and a `README.md`.
 - Keep the `description` in each `SKILL.md` frontmatter clear about **when** to use the skill; Claude uses it to decide when the skill applies.
 - Test changes on real lesson plans before merging.
 - Don't commit build artifacts such as `.zip` files.

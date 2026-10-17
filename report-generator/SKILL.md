@@ -1,11 +1,18 @@
 ---
 name: report-generator
-description: Write a short parent-facing class report (date, belt/sprint/lessons, student names, and a 150-word summary of what students learned) from lesson plans or a deck made with lesson-generator. Use when a teacher asks for a class report, parent update, or parent email after teaching a lesson.
+description: Write a short parent-facing class report (date, belt/sprint/lessons, student names, and a 150-word summary of what students learned) from lesson plans or a deck made with lesson-generator. Use when a teacher asks for a class report, parent update, parent message, or parent email after teaching a lesson. Not for building slides (use lesson-generator).
 ---
 
 # Report Generator
 
 Companion to the `lesson-generator` skill. After a class is taught, write a short report that parents read to learn what their child did in class.
+
+## When to Activate
+
+- After a class, the teacher asks for a parent report, parent update, class summary or parent email.
+- In the same conversation as a lesson-generator deck, or in a new one with the lesson plans attached.
+- **Not** for making slides or planning a class: use `lesson-generator`.
+- **Not** for report cards or progress notes on individual students: this report covers the class as a group.
 
 ## Inputs
 
@@ -38,14 +45,14 @@ Output exactly this, as plain text the teacher can paste into an email or messag
 Format rules:
 
 - **Date:** month/day/year with leading zeros, e.g. `10/17/2026`.
-- **Line 2:** e.g. `Orange Belt Sprint 2 Lessons 3 & 4`. Use "Lesson" for one, "Lessons" with `&` for two, and a range like `3–5` for three or more in a row.
+- **Line 2:** e.g. `Orange Belt Sprint 2 Lessons 3 & 4`. Use "Lesson" for one, "Lessons" with `&` for two, and a range like `3–5` for three or more in a row (non-consecutive: `3, 5 & 7`).
 - **Line 3:** names exactly as the user typed them (spelling and capitalization), in their order, separated by `, `.
 - One blank line, then the report as a single paragraph.
 - No headings, bullets, bold, emojis, sign-off or greeting unless the user asks.
 
 ## Writing the 150-word report
 
-**Word count: 150 words exactly (145–155 is acceptable only if exact is impossible).** Count it with a tool (for example `wc -w`) before sending. Do not guess.
+**Word count: exactly 150 words.** Count it with a tool (for example `wc -w`) before sending, and adjust by adding or cutting words until it is 150. Hyphenated terms and `@keyframes`-style terms count as one word. If no tool is available, number the words in groups of 10 and count again; do not estimate.
 
 Audience: parents, many of them non-programmers. Tone: warm, upbeat, specific, professional.
 
@@ -87,6 +94,14 @@ Today our Orange Belt coders learned how websites decide where things go and how
 - [ ] Report is 150 words, counted with a tool
 - [ ] Every learning goal taught is mentioned; nothing untaught is
 - [ ] Plain text, single paragraph, no extra headings or sign-off
+
+## Anti-Patterns
+
+- Writing a report with placeholder or guessed student names instead of asking.
+- Estimating the word count ("about 150") instead of counting it.
+- Asking several follow-up questions one at a time; ask for everything missing in one message.
+- Praising or singling out individual students, or mentioning behavior or the points system.
+- Listing every fine-grained objective as jargon; group them into a few plain-language learning goals.
 
 ## Multiple classes
 
