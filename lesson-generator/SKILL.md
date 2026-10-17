@@ -1,6 +1,6 @@
 ---
 name: lesson-generator
-description: Turn one or more lesson-plan files (PDF, DOCX, text) into a 60–90 minute classroom slide deck that hits every learning objective, with a hands-on web game after each learning goal. Use when a teacher uploads lesson plans and asks for slides, a deck, or a presentation to teach from.
+description: Turn one or more lesson-plan files (PDF, DOCX, text) into a 60–90 minute classroom slide deck that hits every learning objective, with a hands-on web game after each learning goal. Use when a teacher uploads lesson plans and asks for slides, a slideshow, a deck, or a presentation to teach from. Not for after-class parent updates (use report-generator).
 ---
 
 # Lesson Generator
@@ -11,6 +11,13 @@ Build a teach-ready slide deck from the user's lesson plans. The deck must:
 2. Run **60–90 minutes**, scaled to how much there is to teach.
 3. Put an **interactive web game right after each learning goal**, so students immediately apply what they just learned.
 4. Work for a small, energetic class of **4–10 students** (often kids or teens).
+
+## When to Activate
+
+- The teacher attaches lesson plans and asks for slides, a slideshow, a deck or a presentation.
+- The teacher asks to rebuild, shorten or re-theme a deck this skill made.
+- **Not** for a parent report or class summary after teaching: use `report-generator`.
+- **Not** when there are no lesson plans and the teacher wants a lesson designed from scratch: ask for the plans, or say this skill needs them.
 
 ## Step 1 — Gather inputs
 
@@ -49,12 +56,14 @@ If two lesson plans are combined into one class, count goals across both.
 
 **Time budget per learning goal** (adjust to fit the total):
 
-- Teach: 6–10 min (explain, show, quick check for understanding)
-- Try-it / activity: 3–5 min (hands-on in their own project, or an unplugged movement activity)
-- Game: 5–7 min
+- Teach: 5–10 min (explain, show, quick check for understanding)
+- Try-it / activity: 2–5 min (hands-on in their own project, or an unplugged movement activity)
+- Game: 4–7 min
 - Fixed blocks: warm-up + rules 3–5 min at the start; project kickoff 5–8 min if the lesson plan has a project; exit ticket 2–3 min at the end
 
-Write the schedule out (minute ranges per segment) before building. The minutes must add up exactly to the class length.
+Use the upper end with fewer goals and the lower end with 5–6 goals (6 goals × 11 min + fixed blocks ≈ 76 min leaves room in 90). If it still doesn't fit, trim teach and try-it time before game time, and never cut a game below 4 min.
+
+Write the schedule out (minute ranges per segment) before building. The minutes must add up exactly to the class length. Mark one segment as the **buffer** to cut if class runs long.
 
 ## Step 3 — Pick and verify the games
 
@@ -78,7 +87,7 @@ Each game must practice the skill of the learning goal it follows. Prefer **free
 | Robotics / logic / algorithms | Code.org, Blockly Games (Maze, Bird), Lightbot |
 | Design / UX | Can't Unsee, The Boolean Game, Kerning game (type.method.ac), Color game (color.method.ac) |
 
-**Always verify:** fetch each chosen game URL to confirm it loads, is free, and matches the goal. If a game page can't be fetched, pick another or tell the user. Give each game: exact URL, target levels for the time slot (e.g. "levels 1–8"), and a "speedy finisher" stretch option.
+**Always verify:** fetch each chosen game URL to confirm it loads, is free, and matches the goal. Fetch all candidate URLs in parallel in one step rather than one at a time. If a game page can't be fetched, pick another or tell the user. If the environment has no web access, say the links are unverified in the hand-off rather than claiming they were checked. Give each game: exact URL, target levels for the time slot (e.g. "levels 1–8"), and a "speedy finisher" stretch option.
 
 If no game fits a learning goal, use a short in-browser challenge instead (e.g. edit CodePen/their own project to hit a target) and say so.
 
@@ -140,6 +149,15 @@ Design: one dark color, one light, 1–2 accents (pick from the course/belt/bran
 - [ ] Segment minutes add up to the class length (60–90)
 - [ ] Project/lab requirements match the lesson plan exactly
 - [ ] Every slide has speaker notes
+
+## Anti-Patterns
+
+- One game per fine-grained objective (8+ games): group objectives into goals first (Step 2).
+- Listing a game URL from memory without fetching it, or assigning a Pro/paid level without flagging it.
+- A schedule whose minutes don't add up, or per-goal times that can't fit the class length.
+- Inventing objectives, or changing project requirements, that aren't in the lesson plan.
+- Text-heavy slides or code blocks over ~12 lines; answers printed on the slide instead of in notes or on click.
+- Stopping to ask about class size, length or games when sensible defaults exist (Step 1).
 
 ## Step 8 — Hand off
 
